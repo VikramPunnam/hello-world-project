@@ -1,10 +1,15 @@
 pipeline {
-	agent any
-	stages{
-		stage("git"){
-			steps{
-				git 'https://github.com/vikramvicky61/hello-world-project.git'
-			}
-		}
+  agent any
+    stages{
+      stage("git"){
+        steps{
+	  git 'https://github.com/vikramvicky61/hello-world-project.git'
 	}
+      }
+      stage("build"){
+        steps{
+          sh "mvn clean install"
+        }
+      }
+    }
 }
